@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<span id="time">00:00:00</span>
+
+	<script type="text/javascript">
+		$(document).ready(start);
+
+		function start()
+		{
+			window.setInterval(showTime, 1000);
+		}
+
+		function showTime()
+		{
+			var d = new Date();
+			$("#time").text(d.toLocaleTimeString());
+		}
+	</script>
+</body>
+</html>
