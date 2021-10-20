@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <script  src="js/google_jQuery_3.5.1.js"></script> 
+    <script type="text/javascript">
+        function mouseIn()
+        {
+            $("#div1").css("background-color", "yellow");
+        }
+        function mouseOut() {
+            $("#div1").css("background-color", "white");
+        }
+        $(document).ready(function ()
+        {
+            $("#div1").hover(mouseIn, mouseOut);
+            $("#div1").mousedown(function (evt)
+            {
+                alert(evt.clientX + ":" + evt.clientY);
+                $("#div1").css("background-image", "url('images/img11.jpg')");
+            });
+        });
+    </script>
+    <div id="div1" style="width:480px;height:300px;border:groove">Div Area</div>
+</body>
+</html>

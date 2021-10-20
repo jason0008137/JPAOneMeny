@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<div id="div1" style="width: 480px; height: 300px; border: groove;">AAAA</div>
+
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(start);
+		
+		function start()
+		{
+			$("#div1").hover(mouseIn,mouseOut);
+			$("#div1").mousedown(mousedown);
+		}
+
+		function mouseIn()
+		{
+			$("#div1").css("background-color", "yellow");
+		}
+
+		function mouseOut()
+		{
+			$("#div1").css("background-color", "white");
+		}
+
+		function mousedown(eventArgs) {
+			alert(eventArgs.clientX + ":" + eventArgs.clientY);
+			$("#div1").css("background-image","url('https://bit.ly/3DW9DHf')");
+		}
+
+	</script>
+</body>
+</html>
