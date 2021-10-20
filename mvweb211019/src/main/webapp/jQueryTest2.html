@@ -5,24 +5,53 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 	<button id="b1">b1</button>
 	<button id="b2">b2</button>
+	<button id="b3">b3</button>
+	<button id="b4">b4</button>
+
+	<input type="text" id="text" value="AAA">
+
+	<p class="p1">1</p>
+	<p class="p1">2</p>
+	<p class="p2">3</p>
 
 	<script>
-		function A() {
-			$("#b1").click(
-				function B1()
-				{	
-				});
-			$("#b2").click(
-				function B2()
-				{					
-				});
+		$(document).ready(start);
+
+		function start()
+		{
+			$("#b1").click(B1);
+			$("#b2").click(B2);
+			$("#b3").click(B3);
+			$("#b4").click(B4);
 		}
 
-		$(document).ready(A);
+		function B1() {
+			// alert("B1");
+
+			alert($("#text").val());
+		}
+
+		function B2() {
+			// alert("B2");
+
+			var s1 = prompt("Idiot", "AAAAAAA");
+			$("#text").val(s1)
+			var s2 = $("#text").val()
+			alert(s2);
+		}
+
+		function B3() {
+			$(".p1").hide();
+		}
+
+		function B4() {
+			$(".p1").show();
+		}
 	</script>
 </body>
 </html>
