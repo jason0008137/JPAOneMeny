@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<img src="images/cat.png" id="img" height="100" width="100"/>
+	<img src="images/cat2.png" id="img2" height="100" width="100" onmouseover="func2()"/>
+
+	<script type="text/javascript">
+
+		function func1()
+		{
+			window.alert("XXXX");
+		}
+
+
+		function func2() {
+			alert("RRRR");
+		}
+
+		var img = document.getElementById("img");
+		img.addEventListener("click", func1);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	
+	<button onclick="add()">add</button>
+
+	<button onclick="show()">show</button>
+
+	<button onclick="delete1()">delete</button>
+
+	<ul id="list">
+		<li>A</li>
+		<li>B</li>
+	</ul>
+
+	<!-- <ul id="list"><li>A</li><li>B</li></ul> -->
+
+	<!--
+	<script type="text/javascript">
+		
+		function add()
+		{
+			var list = document.getElementById("list");
+			var text = prompt("", "C");
+			var hash = document.createElement("li");
+			hash.textContent = text;
+			list.appendChild(hash);
+
+			alert(list.childNodes.length);
+		}
+
+		function show()
+		{
+			var list = document.getElementById("list");
+
+			var size1 = list.children.length;
+			var size2 = list.childNodes.length;
+
+			// alert(size1);//2
+			// alert(size2);//5?!
+
+			var string = "";
+			// for (var i = 1; i < size2; i += 2) {
+			// 	string += list.childNodes[i].textContent + "\n";
+			// }
+			for (var i = 0; i < size1; i++) {
+				string += list.children[i].textContent + "\n";
+			}			
+			alert(string);
+			alert(list.childNodes[0]);//[object Text]?!
+		}
+
+		function delete1() {
+			var list = document.getElementById("list");
+			list.removeChild(list.children[0]);
+		}
+	</script>
+	-->
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Java Script Object</title>
+</head>
+<body>
+<button onclick="create()">Create</button>
+<button onclick="display()">Display</button><br/>
+<button onclick="scriptObject()">Script Object</button>
+<button onclick="scriptArray()">Script Array</button>
+<script>
+         var data=[ ];
+         function scriptArray(){
+      	   var product=[{"productName":"Apple","price":20000} , {"productName":"ASUS","price":25000}];
+      	    var str="";
+     	   for(var i=0;i<product.length;i++){
+        		var ps=product[i];
+        		str+=ps.productName+":"+ps.price+"\n";
+        	}
+     	   alert(str);
+       }
+         function scriptObject(){
+        	   var product={"productName":"Apple","price":20000};
+        	   alert(product.productName);
+        	   alert(product.price);
+         }
+        function create(){
+            var person=new Object();
+            var n=prompt("Input Name","Mary");
+            person.name=n;
+            var p=prompt("Input phone","12345");
+            person.phone=p;
+            data.push(person);
+        }
+        function display(){
+        	var str="";
+        	for(var i=0;i<data.length;i++){
+           		var ps=data[i];
+           		str+=ps.name+":"+ps.phone+"\n";
+           	}
+        	alert(str);
+        }
+</script>
+</body>
+</html>

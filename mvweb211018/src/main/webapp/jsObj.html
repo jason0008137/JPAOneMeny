@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="BIG5">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<button onclick="create()">Create</button>
+	<button onclick="display()">Display</button><p/>
+	<button onclick="func3()">func3</button>
+	<button onclick="func4()">func4</button>
+
+	<script>
+		var data = [ ];
+		
+		function create()
+		{
+			var person = new Object();
+			person.name = prompt("Input Name","Mary");
+			person.phone = prompt("Input phone","12345");
+			data.push(person);
+		}
+		
+		function display()
+		{
+			var str = "";
+			for(var i = 0;i<data.length;i++)
+			{
+				var ps = data[i];
+				str += ps.name + ":" + ps.phone + "\n";
+			}
+			alert(str);
+		}
+		
+		function func3()
+		{
+			var product =
+			{
+				"name" : "Apple",
+				"price" : 2000
+			};
+			alert(product.name + "\t" + product.price);
+		}
+
+		function func4()
+		{
+			var product = [
+			{
+				"name" : "Apple",
+				"price" : 2000
+			},
+			{
+				"name" : "Banana",
+				"price" : 100
+			}
+			];
+
+			var str="";
+
+			for(var i = 0; i < product.length; i++)
+			{
+				var ps = product[i];
+				str += ps.name + ":" + ps.price + "\n";
+			}
+			alert(str);
+		}
+	</script>
+</body>
+</html>

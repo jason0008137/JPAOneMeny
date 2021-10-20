@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<script src="js/js.js"></script>
+	<button onclick="getAddElement()">getAddElement</button>
+
+	<p/>
+
+	<div id="div1">show</div>
+
+	<script type="text/javascript">
+
+		var request
+
+		function loaddata() {
+			
+			if (request.readyState == 4 && request.status != 200)
+			{
+				alert("status Code: " + request.status + "ErrorText = " + request.statusText);
+			}
+
+			if (request.readyState == 4 && request.status == 200)
+			{
+				// alert(request.responseText);
+				var div = document.getElementById("div1");
+				div.innerHTML = request.responseText;
+			}
+		}
+
+		function getAddElement() {
+			request = new XMLHttpRequest();
+			request.onreadystatechange = loaddata;
+			request.open("GET", "addElement.html", true);
+			request.send();
+		}
+		
+	</script>
+</body>
+</html>

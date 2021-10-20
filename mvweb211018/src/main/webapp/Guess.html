@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body onload="create()">
+	<input type="nember" max="100" min="1" value="50" id="input" /><br/>
+	<button onclick="guess()">Guess</button>
+
+	<script type="text/javascript">
+		var sysNum = 0;
+		var input = 50;
+		var count = 0;
+
+		function create() {
+			sysNum = parseInt(Math.random() * 100 + 1);
+		}
+
+		function guess() {
+			count++;
+			// input = parseInt(document.getElementById("input").value);
+			input = document.getElementById("input").value;
+			// input = prompt("選個數字：", input);
+			if (input > sysNum)
+				alert(input + "太大");
+			else if (input < sysNum)
+				alert(input + "太小");
+			else{
+				alert(input + " YADA\n猜測次數：" + count);
+				count = 0;
+				create();
+			}
+		}
+	</script>
+</body>
+</html>

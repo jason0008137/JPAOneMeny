@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<div id="div1">No Text</div>
+
+	<script type="text/javascript">
+
+		var request;
+
+		function loaddata() {
+			
+			if (request.readyState == 4 && request.status != 200)
+			{
+				alert("status Code: " + request.status + "ErrorText = " + request.statusText);
+			}
+
+			if (request.readyState == 4 && request.status == 200)
+			{
+				alert(request.responseText);
+				var div = document.getElementById("div1");
+				div.innerText = request.responseText;
+			}
+		}
+
+		function getData() {
+			request = new XMLHttpRequest();
+			request.onreadystatechange = loaddata;
+			request.open("GET", "getText.txt", true);
+			request.send();
+		}
+		
+	</script>
+
+	<button onclick="getData()">GO</button>
+
+</body>
+</html>

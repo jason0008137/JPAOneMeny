@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<button onclick="generate()">A</button>
+	<button onclick="reverse()">B</button>
+	<button onclick="getData()">C</button>
+	<button onclick="getData2()">D</button>
+
+	<div = id="div1"></div>
+
+	<script type="text/javascript">
+
+		var data;
+
+		function generate()
+		{
+			var obj = new Object();
+			obj.userName = "Jhon";
+			obj.age = 20;
+			data = JSON.stringify(obj);
+			// alert(data);
+
+			var div = document.getElementById("div1");
+			div.innerText = data;
+		}
+
+		function reverse() {
+			var obj = JSON.parse(data);
+			alert(obj.userName);
+			alert(obj.age);
+		}
+	</script>
+
+	<script type="text/javascript">
+
+		var request;
+
+		function getData() {
+			request = new XMLHttpRequest();
+			request.onreadystatechange = loaddata;
+			request.open("GET", "JSONServlet", true);
+			request.send();
+		}
+		
+		function getData2() {
+			request = new XMLHttpRequest();
+			request.onreadystatechange = loaddata2;
+			request.open("GET", "ProductServlet", true);
+			request.send();
+		}
+
+		function loaddata() {
+			
+			if (request.readyState == 4 && request.status != 200)
+			{
+				alert("status Code: " + request.status + "ErrorText = " + request.statusText);
+			}
+
+			if (request.readyState == 4 && request.status == 200)
+			{
+				alert(request.responseText);
+				// var div = document.getElementById("div1");
+				// div.innerText = request.responseText;
+
+				var obj = JSON.parse(request.responseText);
+				alert(obj.userName + "\n" + obj.age);
+			}
+		}
+
+		function loaddata2() {
+			
+			if (request.readyState == 4 && request.status != 200)
+			{
+				alert("status Code: " + request.status + "ErrorText = " + request.statusText);
+			}
+
+			if (request.readyState == 4 && request.status == 200)
+			{
+				alert(request.responseText);
+				// var div = document.getElementById("div1");
+				// div.innerText = request.responseText;
+
+				var obj = JSON.parse(request.responseText);
+				alert(obj.name + "\n" + obj.price);
+			}
+		}
+
+	</script>
+
+</body>
+</html>
