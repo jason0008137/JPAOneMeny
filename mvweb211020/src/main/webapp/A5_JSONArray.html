@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<button onclick="generate()">do it</button>
+	<button onclick="parseJson()"></button>
+	<div id="div1"></div>
+
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		var array = [];
+
+		function generate()
+		{
+			var obj = new Object();
+			obj.user = "A";
+			obj.city = "TT"
+			array.push(obj);
+			obj = new Object();
+			obj.user = "B";
+			obj.city = "Nga"
+			array.push(obj);
+			$('#div1').text(JSON.stringify(array));//[{"user":"A","city":"TT"},{"user":"B","city":"Nga"}]
+		}
+
+		function parseJson()
+		{
+			var string = "[{\"user\":\"A\",\"city\":\"TT\"},{\"user\":\"B\",\"city\":\"Nga\"}]";
+			var objArray = JSON.parse(string);
+		}
+	</script>
+</body>
+</html>

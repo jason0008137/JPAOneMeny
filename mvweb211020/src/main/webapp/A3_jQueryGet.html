@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<input type="text" id="txt" value="fuckSuckTeacher幹崊老師">
+	<button id="btn1">A</button>
+	<div id="div1"></div>
+
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(start);
+		function start()
+		{
+			$("#btn1").click(f1);
+		}
+		function f1()
+		{
+			var txt = $("#txt").val();
+			$.get(
+				"A4_jQueryGetServlet",
+				{
+					"txt" : txt
+				},
+				result);
+		}
+		function result(data, status)
+		{
+			alert(status);
+			$("#div1").html(data);
+		}
+	</script>
+</body>
+</html>
