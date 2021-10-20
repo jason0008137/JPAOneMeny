@@ -5,30 +5,24 @@
 	<title>Insert title here</title>
 </head>
 <body>
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-	<button>Hide</button>
-	<br/>
-	
-	<p>XXXXXX<p>
+	<button id="b1">b1</button>
+	<button id="b2">b2</button>
 
 	<script>
-
-		function hiding()
-		{
-			$("p").hide();
-		}
-
-		function A()
-		{
-			// alert("A");
-			$("button").click(hiding);
+		function A() {
+			$("#b1").click(
+				function B1()
+				{	
+				});
+			$("#b2").click(
+				function B2()
+				{					
+				});
 		}
 
 		$(document).ready(A);
-
 	</script>
-
 </body>
 </html>
