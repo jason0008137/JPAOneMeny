@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<form action="/" id="f1">
+		<label>User</label>
+		<input type="text" name="user" value="Mary"/>
+		<br/>
+		<label>Password</label>
+		<input type="text" name="password" value="1234"/>
+		<br/>
+	</form>
+	
+	<button id="btn1">Go</button>
+
+	<div id="div1">XXXXXXXX</div>
+
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+
+		$(document).ready(start);
+
+		function start()
+		{
+			$("#btn1").click(btnOnClick);
+		}
+
+		function btnOnClick()
+		{
+			var data = $("#f1").serialize();
+			// $("#div1").text(data);
+			$("#div1").load("A2_serializeDemo.jsp", data);//user=Mary&password=1234
+		}
+	</script>
+</body>
+</html>
