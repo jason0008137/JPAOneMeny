@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+        /*
+        dataType：
+        預期Server傳回的資料類型，如果沒指定，jQuery會根據HTTP MIME Type自動選擇以responseXML或responseText傳入你的success callback。
+
+        可選的資料類型有：
+        xml   ：傳回可用jQuery處理的XML
+        html  ：傳回HTML，包含jQuery會自動幫你處理的script tags。
+        script：傳回可執行的JavaScript。(script不會被自動cache，除非cache設為true)
+        json  ：傳回JSON       
+        text  ：傳回純文字字串
+        */
+
+        var Submit = function ()
+        {
+            var URLs = "A8_receive.jsp";
+            $.ajax(
+            {
+                
+                url: URLs,//引數1
+                
+                data: $('#sentToBack').serialize(),//引數2
+                
+                type: "POST",//引數3
+                
+                dataType: 'html',//引數4
+                
+                success: function (msg)//引數5
+                {
+                    alert(msg);
+                    $("#div1").html(msg);
+                },
+                
+                error: function (xhr, ajaxOptions, thrownError)//引數6
+                {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="sentToBack">
+        <input type="text" name="Text" value="Hello World"/> 
+        <input type="button" value="送出" onclick="Submit()"/>
+    </form>
+    <div id="div1"></div>
+</body>
+</html>

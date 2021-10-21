@@ -30,8 +30,15 @@
 
 		function parseJson()
 		{
-			var string = "[{\"user\":\"A\",\"city\":\"TT\"},{\"user\":\"B\",\"city\":\"Nga\"}]";
-			var objArray = JSON.parse(string);
+			var string1 = '[{"user":"A","city":"TT"},{"user":"B","city":"Nga"}]';
+			var objArray = JSON.parse(string1);
+
+			var string2 = "";
+			for (var i = 0; i < objArray.length; i++)
+			{
+				string2 += objArray[i].user + "->" + objArray[i].city + "\n";
+			}
+			alert(string2);
 		}
 	</script>
 </body>

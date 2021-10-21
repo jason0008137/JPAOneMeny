@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<input type="text" id="user" value="AAA"><br/>
+	<input type="text" id="city" value="TTT"><br/>
+	<button onclick="add()">add</button>
+	<button onclick="send()">send</button>
+	<div id="div1"></div>
+
+	<script type="text/javascript">
+		var array = [];
+
+		function add()
+		{
+			var obj = new Object();
+			obj.user = $("#user").val();
+			obj.city = $("#city").val();
+			array.push(obj);
+			alert(JSON.stringify(array));
+		}
+
+		function send()
+		{
+			var data = JSON.stringify(array);
+			$.post(
+				"A7_UCServlet",
+				{
+					"data" : data
+				},
+				result
+				);
+		}
+
+		function result(data, status)
+		{
+			$("#div1").html(data);
+		}
+
+	</script>
+
+</body>
+</html>
