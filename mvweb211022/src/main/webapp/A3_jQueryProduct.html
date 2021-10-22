@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<form id="frmProduct">
+		產品編號:
+		<input type="text" id="pid" name="pid" value="100"/><br/>
+		產品名稱:
+		<input type="text" id="pname" name="pname" value="iPhone 6"/><br/>
+		產品單價:
+		<input type="text" id="price" name="price" value="20000"/><br/>
+		產品產地:
+		<input type="text" id="place" name="place" value="Migo"/><br/>
+
+		<input type="button" value="上傳儲存" onclick="save()"/>
+		<input type="button" value="update" onclick="update()"/>
+		<input type="button" value="delete" onclick="deletep()"/>
+
+		<input type="hidden" value="" name="action" id="action">
+	</form>
+
+	<button onclick="query()">query</button>
+	<div id="divShow"></div>
+
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+		
+		function save()
+		{
+			var URLs = "A4_AddProductServlet";
+			$.ajax(
+			{
+				url: URLs,
+				data: $('#frmProduct').serialize(),
+				type: "POST",
+				dataType: 'text',
+				success: function (msg)
+				{
+					if(msg=="true")
+						alert("新增成功");
+					else
+						alert("新增失敗");
+                    // $("#div1").html(msg);
+                },
+                error: function (xhr, ajaxOptions, thrownError)
+                {
+                	alert(xhr.status);
+                	alert(thrownError);
+                }
+            });
+		}
+
+		// function query()
+		// {
+		// 	$.get("A1_MyproductServlet", result);
+		// }
+		
+		// function result(data, status)
+		// {
+		// 	$("#divShow").html(data);
+		// }
+
+		function query()
+		{
+			var URLs = "A1_MyproductServlet";
+			$.ajax(
+			{
+				url: URLs,
+				// catch: false,
+				cache: false,
+				type: "POST",
+				dataType: 'html',
+				success: function (msg)
+				{
+					$("#divShow").html(msg);
+				},
+				error: function (xhr, ajaxOptions, thrownError)
+				{
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			});
+		}
+
+		function update()
+		{
+			var URLs = "A5_UpdateProductServlet";
+			$("#action").val("update");
+			$.ajax(
+			{
+				url: URLs,
+				data: $('#frmProduct').serialize(),
+				type: "POST",
+				dataType: 'text',
+				success: function (msg)
+				{
+					if (msg == "true")
+						alert("修改成功");
+					else
+						alert("修改失敗" + msg);
+				},
+				error: function (xhr, ajaxOptions, thrownError)
+				{
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			});
+		}
+
+		function deletep()
+		{
+			var URLs = "A5_UpdateProductServlet";
+			$("#action").val("delete");
+			$.ajax(
+			{
+				url: URLs,
+				data: $('#frmProduct').serialize(),
+				type: "POST",
+				dataType: 'text',
+				success: function (msg)
+				{
+					if (msg == "true")
+						alert("刪除成功");
+					else
+						alert("刪除失敗" + msg);
+				},
+				error: function (xhr, ajaxOptions, thrownError)
+				{
+					alert(xhr.status);
+					alert(thrownError);
+				}
+			});
+		}
+	</script>
+</body>
+</html>
