@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <H1>產品資料輸入</H1>
+    <form id="frmProduct">
+       產品編號:
+       <input type="text" id="pid" name="pid" value="100"/><br/>
+       產品名稱:
+       <input type="text" id="pname" name="pname" value="iPhone 6"/><br/>
+       產品單價:
+       <input type="text" id="price" name="price" value="20000"/><br/>
+       產品產地:
+       <input type="text" id="place" name="place" value="Migo"/><br/>
+       
+       <input type="button" value="上傳儲存" onclick="save()"/>
+       <input type="button" value="所有產品" onclick="query()"/>
+   </form>
+   <div id="div1"></div>
+
+   <script>
+        /*
+        dataType：預期Server傳回的資料類型，如果沒指定，jQuery會根據HTTP MIME Type自動選擇以responseXML或responseText傳入你的success callback。
+
+        可選的資料類型有：
+        xml   ：傳回可用jQuery處理的XML
+        html  ：傳回HTML，包含jQuery會自動幫你處理的script tags。
+        script：傳回可執行的JavaScript。(script不會被自動cache，除非cache設為true)
+        json  ：傳回JSON       
+        text  ：傳回純文字字串
+        */
+        var save = function ()
+        {
+            var URLs = "A9_ProductServlet";
+            $.ajax(
+            {
+                url: URLs,
+                data: $('#frmProduct').serialize(),
+                type: "POST",
+                dataType: 'text',
+                success: function (msg)
+                {
+                    if(msg=="true")
+                        alert("新增成功");
+                    else
+                        alert("新增失敗");
+                    // $("#div1").html(msg);
+                },
+                error: function (xhr, ajaxOptions, thrownError)
+                {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
+        var query = function ()
+        {
+            var URLs = "A10_ALLProductServlet";
+            $.ajax(
+            {
+                url: URLs,           
+                type: "POST",
+                dataType: 'html',
+                success: function (msg)
+                {
+                    $("#div1").html(msg);
+                },
+                error: function (xhr, ajaxOptions, thrownError)
+                {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
