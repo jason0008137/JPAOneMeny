@@ -78,4 +78,8 @@ public class Coffees implements java.io.Serializable
 		this.total = total;
 	}
 
+	public String toString()
+	{
+		return cofName + ":" + price;
+	}
 }
