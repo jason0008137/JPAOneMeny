@@ -12,6 +12,8 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.*;
 
+import model.Employee;
+
 @WebServlet("/EmployeeServlet")
 public class EmployeeServlet extends HttpServlet
 {
@@ -25,7 +27,27 @@ public class EmployeeServlet extends HttpServlet
 				.buildMetadata()
 				.buildSessionFactory();
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Session session = sessionFactory.openSession();// 從對談工廠獲取一個session
+		Transaction t = session.beginTransaction();
+
+		Employee e1 = new Employee();
+		e1.setId(1001);
+		e1.setFirstName("Yui");
+		e1.setLastName("Lee");
+
+		Employee e2 = new Employee();
+		e2.setId(1002);
+		e2.setFirstName("Ming");
+		e2.setLastName("Wang");
+		
+		session.persist(e1);
+		session.persist(e2);
+		t.commit();
+		
+		session.close();
+		
+		response.getWriter().append("Employee Saved ");
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
