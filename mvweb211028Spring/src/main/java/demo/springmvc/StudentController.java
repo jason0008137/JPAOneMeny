@@ -17,7 +17,7 @@ public class StudentController
 		return new ModelAndView("student", "command", s);
 	}
 
-	@RequestMapping(value = "/addStudent", method = RequestMethod.POST, consumes = "application/x-www-form-urlencoded;charset=UTF-8")
+	@RequestMapping(value = "/addStudent", method = RequestMethod.POST/*, consumes = "application/x-www-form-urlencoded;charset=UTF-8"*/)
 	public String addStudent(@ModelAttribute("student") Student student,
 			ModelMap model)
 	{
