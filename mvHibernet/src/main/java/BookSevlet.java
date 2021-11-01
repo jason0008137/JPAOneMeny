@@ -15,7 +15,10 @@ public class BookSevlet extends HttpServlet
 	{
 		BookDAO bdao = new BookDAO();
 		bdao.setup();
-		bdao.create();
+//		bdao.create();
+//		bdao.update();
+//		bdao.read(1L);
+		bdao.delete(1L);
 		response.getWriter().append("YOOOOOO").append(request.getContextPath());		
 	}
 

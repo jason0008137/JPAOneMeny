@@ -19,6 +19,15 @@ public class Book
 	public Book()
 	{
 	}
+	
+	public Book(long id, String title, String author, double price)
+	{
+		super();
+		this.id = id;
+		this.title = title;
+		this.author = author;
+		this.price = price;
+	}
 
 	public long getId()
 	{

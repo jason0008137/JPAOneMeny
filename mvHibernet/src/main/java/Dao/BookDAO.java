@@ -47,25 +47,80 @@ public class BookDAO
 		session.save(book);
 		session.getTransaction().commit();
 		session.close();
+		sessionFactory.close();
 	}
 
-	protected void read()
+	public void read(Long id)
 	{
-		// code to get a book
+		Session session = sessionFactory.openSession();
+
+		Book book = session.get(Book.class, id);
+
+		if (book != null)
+		{
+			System.out.println("Title: " + book.getTitle());
+			System.out.println("Author: " + book.getAuthor());
+			System.out.println("Price: " + book.getPrice());
+		} else
+		{
+			System.out.println("DUM");
+		}
+
+		session.close();
+		sessionFactory.close();
 	}
 
-	protected void update()
+	public void update()
 	{
-		// code to modify a book
+		Book book = new Book();
+		book.setId(1);
+		book.setTitle("KAIKIA");
+		book.setAuthor("99999");
+		book.setPrice(6969f);
+
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+//		Book b = session.get(Book.class, book.getId());
+//		if (b != null)
+//		{
+//			session.update(book);
+//		} else
+//		{
+//			System.out.println("Dum");
+//		}
+
+		try
+		{
+			session.update(book);
+			session.getTransaction().commit();
+		} catch (Exception e)
+		{
+			System.out.println("Hibernate Error: " + e.getMessage());
+			System.out.println("Can't update book id: " + book.getId());
+		}
+
+//		session.getTransaction().commit();
+		session.close();
+		sessionFactory.close();
 	}
 
-	protected void delete()
+	public void delete(Long id)
 	{
-		// code to remove a book
-	}
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
 
-	public static void main(String[] args)
-	{
-		// code to run the program
+		Book b = session.get(Book.class, id);
+		if (b != null)
+		{
+			session.delete(b);
+		} else
+		{
+			System.out.println("Dum");
+		}
+
+		session.getTransaction().commit();
+		session.close();
+
 	}
 }
