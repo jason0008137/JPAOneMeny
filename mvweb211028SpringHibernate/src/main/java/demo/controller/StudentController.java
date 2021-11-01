@@ -44,7 +44,7 @@ public class StudentController
 
 	public void addSutent(Student s)
 	{
-
+		
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
