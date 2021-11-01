@@ -1,9 +1,19 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="student")
 public class Student
 {
 	private int age;
+	@Column(name="sname")
 	private String name;
+	@Id
+	@Column(name="sid")
 	private int id;
 
 	public void setAge(int age)
