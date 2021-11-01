@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="BIG5">
+	<title>Insert title here</title>
+</head>
+<body>
+	<input type="color" id="coler">
+	<input type="date" id="date" min="1950-01-1">
+	<input type="range" id="range">
+	<input type="number" id="number">
+
+	<button onclick="A()">A</button>
+	<script>
+		function A() {
+			var coler = document.getElementById("coler");
+			var date = document.getElementById("date");
+			var range = document.getElementById("range");
+			var number = document.getElementById("number");
+			// alert(coler.value);
+			// alert(date.value);
+			alert(range.value);
+			// alert(number.value);
+		}
+	</script>
+</body>
+</html>

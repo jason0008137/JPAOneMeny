@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="BIG5">
+	<title>Insert title here</title>
+</head>
+<body>
+	<form action="" method="post" onsubmit="return F()">
+		<label>Score</label>
+		<!-- <input type="number" id="number" required min="0" max="100"> -->
+		<input type="number" id="number" required>
+		<button>GO</button>
+	</form>
+	<script>
+		function F() {
+			var number = document.getElementById("number");
+			if(number.value >= 0 && number.value <= 100){
+				return true;
+			}
+			else {
+				alert("Dum");
+				return false;
+			}
+		}
+	</script>
+
+</body>
+</html>

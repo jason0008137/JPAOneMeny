@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="BIG5">
+	<title>Insert title here</title>
+</head>
+<body>
+	<form action="test.jsp" method="post" onsubmit="return check()">
+		<label>User</label> <br />
+		<input type="text" name="user" id="user" value="jason" />
+		
+		<label>Password</label> <br />
+		<input type="Password" name="password" id="password" value="1234" /> <p />
+		
+		<button>GOOOO</button>
+	</form>
+	
+	<input type="button" onclick="showDiv()" value="FuckTeacher" />
+	<div id="div1">Division Value</div>
+	<script>
+		function check() {
+			var pass = document.getElementById("password");
+			if(isNaN(pass.value)){
+				alert("NOOOOOO");
+				return false;
+			}else return true;
+		}
+		function showDiv() {
+			var div = document.getElementById("div1")
+			//div.innerText = "Hello Div";//純文字
+			div.innerHTML = "<h2>Hello Div</h2>";//HTML格式
+		}
+	</script>
+</body>
+</html>

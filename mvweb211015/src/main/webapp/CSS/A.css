@@ -1,0 +1,11 @@
+h2.blue{
+	color: blue;
+}
+h2#toc{
+	font-weight: bold;
+	font-style: italic;
+}
+input[type="text"].red{
+	background-color: blue;
+	color: red;
+}
