@@ -2,11 +2,12 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-	<title>Spring MVC Form Handling</title>
+<title>Spring MVC Form Handling</title>
 </head>
 
 <body>
-	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<h2>Student Information</h2>
 	<form:form method="post" action="" onclick="return false">
 		<table>
@@ -24,36 +25,31 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="Submit" onclick="send()" />
-					<input type="button" value="List Submit" onclick="list1()" />
-				</td>
+               <input type="submit" value="Submit" onclick="send()" />
+               <input type="button" value="List Student" onclick="display()" />
+            </td>
 			</tr>
 		</table>
 	</form:form>
 	<div id="div1"></div>
 	<script>
 		function send()
-		{
+      {
 			$.post(
-				"addStudent",
-				{
-					"age" : $("#age").val(),
-					"name" : $("#name").val(),
-					"id" : $("#id").val()
-				},
-				function(data)
-				{
-					$("#div1").html(data);
-				});
+            "addStudent",
+            {
+               "age" : $("#age").val(),
+               "name" : $("#name").val(),
+               "id" : $("#id").val()
+            },
+            function(data)
+            {
+               $("#div1").html(data);
+            });
 		}
-
-		// function list1()
-		// {
-		// 	$.get("list", listStudentResult);
-		// }
-
-		function list1()
-		{
+		
+      function display()
+      {
 			$.ajax(
             {
                url : "list",
@@ -67,11 +63,14 @@
             });
 		}
 
-		// function listStudentResult(data, status)
-		// {
-		// 	$("#div1").html(data);
-		// }
+      function result(data, status)
+      {
+         $("#div1").html(data);
+      }
+      
 	</script>
 </body>
 
 </html>
+
+

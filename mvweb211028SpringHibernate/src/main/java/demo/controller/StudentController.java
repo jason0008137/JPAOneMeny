@@ -37,14 +37,51 @@ public class StudentController
 		model.addAttribute("age", student.getAge());
 		model.addAttribute("id", student.getId());
 
-		addSutent(student);
+		if (addSutent(student))
+			model.addAttribute("flag", "YA");
+		else
+			model.addAttribute("flag", "DUM");
+
+//		addSutent(student);
 
 		return "result";
 	}
 
-	public void addSutent(Student s)
+	public boolean addSutent(Student s)
 	{
-		
+		boolean flag = true;
+
+		SessionFactory factory = null;
+		try
+		{
+			factory = new Configuration().configure(/* "/model/hibernate.cfg.xml" */).buildSessionFactory();
+		} catch (Throwable ex)
+		{
+			System.err.println("Failed to create sessionFactory object." + ex);
+			throw new ExceptionInInitializerError(ex);
+		}
+
+		Session session = factory.openSession();
+		Transaction tx = null;
+
+		try
+		{
+			tx = session.beginTransaction();
+			session.save(s);
+			tx.commit();
+		} catch (/* Hibernate */Exception e)
+		{
+			if (tx != null)
+				tx.rollback();
+			System.out.print("Idiot" + e.getMessage());
+			e.printStackTrace();
+			flag = false;
+		} finally
+		{
+			session.close();
+		}
+
+		return flag;
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -75,13 +112,23 @@ public class StudentController
 		{
 			tx = session.beginTransaction();
 			List data = session.createQuery("FROM Student").list();
-			for (Iterator iterator = data.iterator(); iterator.hasNext();)
+
+//			for (Iterator iterator = data.iterator(); iterator.hasNext();)
+//			{
+//				Student st = (Student) iterator.next();
+//				System.out.print("Student ID: " + st.getId());
+//				System.out.print("  Last Name: " + st.getName());
+//				System.out.println("  Address: " + st.getAge());
+//			}
+
+			for (Object object : data)
 			{
-				Student st = (Student) iterator.next();
+				Student st = (Student) object;
 				System.out.print("Student ID: " + st.getId());
 				System.out.print("  Last Name: " + st.getName());
 				System.out.println("  Address: " + st.getAge());
 			}
+
 			tx.commit();
 			return data;
 		} catch (HibernateException e)

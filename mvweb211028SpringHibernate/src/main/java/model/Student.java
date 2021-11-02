@@ -6,14 +6,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="student")
+@Table(name = "student")
 public class Student
 {
 	private int age;
-	@Column(name="sname")
+	@Column(name = "sname")
 	private String name;
 	@Id
-	@Column(name="sid")
+	@Column(name = "sid")
 	private int id;
 
 	public void setAge(int age)
@@ -44,5 +44,10 @@ public class Student
 	public int getId()
 	{
 		return id;
+	}
+
+	public String toString()
+	{
+		return id + " : " + name + " : " + age;
 	}
 }
