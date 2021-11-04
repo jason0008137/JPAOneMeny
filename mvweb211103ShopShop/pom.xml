@@ -6,11 +6,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>gjun</groupId>
-	<artifactId>mvweb211101SpringAnnoation</artifactId>
+	<artifactId>mvweb211103ShopShop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>mvweb211101SpringAnnoation Maven Webapp</name>
+	<name>mvweb211103ShopShop Maven Webapp</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
 
@@ -70,7 +70,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>mvweb211101SpringAnnoation</finalName>
+		<finalName>mvweb211103ShopShop</finalName>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
 			<plugins>

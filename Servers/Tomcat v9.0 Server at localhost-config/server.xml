@@ -101,7 +101,7 @@
 				<!-- Access log processes all example. Documentation at: /docs/config/valve.html 
 					Note: The pattern used is equivalent to using pattern="common" -->
 				<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
-			<Context docBase="web211103_1_bootstrap" path="/web211103_1_bootstrap" reloadable="true" source="org.eclipse.jst.jee.server:web211103_1_bootstrap"/></Host>
+			<Context docBase="mvweb211103ShopShop" path="/mvweb211103ShopShop" reloadable="true" source="org.eclipse.jst.jee.server:mvweb211103ShopShop"/></Host>
 		</Engine>
 	</Service>
 </Server>
