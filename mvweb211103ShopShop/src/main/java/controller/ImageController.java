@@ -17,6 +17,7 @@ public class ImageController
 	@ResponseBody
 	public List<Image> generatePicPath(Model m)
 	{
+		System.out.println("pic OK");
 		List<Image> list = Arrays.asList(
 				new Image(
 						"images/p1.jpg",

@@ -10,6 +10,7 @@ public class ProductController
 	@RequestMapping("/pro")
 	public String produce(ModelMap model)
 	{
+		System.out.println("pro OK");
 		return "product";
 	}
 }

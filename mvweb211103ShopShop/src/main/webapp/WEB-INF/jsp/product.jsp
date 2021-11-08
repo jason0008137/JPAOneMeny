@@ -39,8 +39,8 @@
 			<div class="card" style="width:360px;margin-left: 20px;">
 				<img class="card-img-top" src="images/img_avatar1.png" id="img1" alt="Card image" style="width:90%">
 				<div class="card-body">
-					<h4 class="card-title">John Doe</h4>
-					<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+					<h4 class="card-title" id="t1">John Doe</h4>
+					<p class="card-text" id="d1">Some example text some example text. John Doe is an architect and engineer</p>
 					<a href="#" class="btn btn-primary">See Profile</a>
 				</div>
 			</div>
@@ -53,8 +53,8 @@
 			<div class="card" style="width:360px;margin-left: 5px; margin-right:5px">
 				<img class="card-img-top" src="images/img_avatar1.png" id="img2" alt="Card image" style="width:90%">
 				<div class="card-body">
-					<h4 class="card-title">John Doe</h4>
-					<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+					<h4 class="card-title" id="t2">John Doe</h4>
+					<p class="card-text" id="d2">Some example text some example text. John Doe is an architect and engineer</p>
 					<a href="#" class="btn btn-primary">See Profile</a>
 				</div>
 			</div>
@@ -67,8 +67,8 @@
 			<div class="card" style="width:360px; margin-right:20px">
 				<img class="card-img-top" src="images/img_avatar1.png" id="img3" alt="Card image" style="width:90%">
 				<div class="card-body">
-					<h4 class="card-title">John Doe</h4>
-					<p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+					<h4 class="card-title" id="t3">John Doe</h4>
+					<p class="card-text" id="d3">Some example text some example text. John Doe is an architect and engineer</p>
 					<a href="#" class="btn btn-primary">See Profile</a>
 				</div>
 			</div>
@@ -83,7 +83,8 @@
 
 		function start()
 		{
-		$.ajax(
+			alert("AAAAYYY");
+			$.ajax(
 			{
 				url: "pic",
 				cache: false,
@@ -91,8 +92,9 @@
 				dataType: 'json',
 				success: function (objArray)
 				{
+					alert("AAAAYYY");
 					show(objArray);
-				}
+				},
 				error: function (xhr, ajaxOptions, thrownError)
 				{
 					alert(xhr.status);
@@ -103,14 +105,20 @@
 
 		function show(array)
 		{
-			$("#img1").array("src",array[0].path);
-			$("#img2").array("src",array[1].path);
-			$("#img3").array("src",array[2].path);
+			$("#img1").attr("src",array[0].path);
+			$("#img2").attr("src",array[1].path);
+			$("#img3").attr("src",array[2].path);
+			$("#t1").text(array[0].name);
+			$("#t2").text(array[1].name);
+			$("#t3").text(array[2].name);
+			$("#d1").text(array[0].des);
+			$("#d2").text(array[1].des);
+			$("#d3").text(array[2].des);
 		}
 	</script>
 
 
-<!-- 	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$(document).ready(start);
 
 		function start()
@@ -137,39 +145,39 @@
 
 		function show(arry)
 		{
-			$("#img1").attr("src", arry[0].path);
-			$("#t1").text(arry[0].productName);
-			$("#d1").text(arry[0].description);
-			$("#img2").attr("src", arry[1].path);
-			$("#t2").text(arry[1].productName);
-			$("#d2").text(arry[1].description);
-			$("#img3").attr("src", arry[2].path);
-			$("#t3").text(arry[2].productName);
-			$("#d3").text(arry[2].description);
+			$("#img1").attr("src",arry[0].path);
+			$("#img2").attr("src",arry[1].path);
+			$("#img3").attr("src",arry[2].path);
+			$("#t1").text(arry[0].name);
+			$("#t2").text(arry[1].name);
+			$("#t3").text(arry[2].name);
+			$("#d1").text(arry[0].des);
+			$("#d2").text(arry[1].des);
+			$("#d3").text(arry[2].des);
 		}
 
-		function check()
-		{
-			$.ajax(
-			{
-				url: "check", 
-				data:{"userName":$("#userName").val(),"password":$("#password").val()},                        
-				cache:false ,
-				type: "GET",
-				dataType: 'text',
-				success: function (msg)
-				{
-					alert(msg);
-					$('#myModal').modal('hide');
-				},
-				error: function (xhr, ajaxOptions, thrownError)
-				{
-					alert(xhr.status);
-					alert(thrownError);
-				}
-			});
-			return false;
-		}
+		// function check()
+		// {
+		// 	$.ajax(
+		// 	{
+		// 		url: "check", 
+		// 		data:{"userName":$("#userName").val(),"password":$("#password").val()},                        
+		// 		cache:false ,
+		// 		type: "GET",
+		// 		dataType: 'text',
+		// 		success: function (msg)
+		// 		{
+		// 			alert(msg);
+		// 			$('#myModal').modal('hide');
+		// 		},
+		// 		error: function (xhr, ajaxOptions, thrownError)
+		// 		{
+		// 			alert(xhr.status);
+		// 			alert(thrownError);
+		// 		}
+		// 	});
+		// 	return false;
+		// }
 	</script> -->
 </body>
 </html>

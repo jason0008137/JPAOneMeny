@@ -138,6 +138,7 @@
 
     function start()
     {
+      alert("AAAA")
       $.ajax(
       {
         url: "pic",                         
