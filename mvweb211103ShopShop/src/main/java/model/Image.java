@@ -1,7 +1,15 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="productimages")
 public class Image
 {
+	@Id
+	private int pid;
 	private String path, name, des;
 
 	public Image()
@@ -10,12 +18,23 @@ public class Image
 		// TODO Auto-generated constructor stub
 	}
 
-	public Image(String path, String name, String des)
+	public Image(int pid, String path, String name, String des)
 	{
 		super();
+		this.pid = pid;
 		this.path = path;
 		this.name = name;
 		this.des = des;
+	}
+
+	public int getPid()
+	{
+		return pid;
+	}
+
+	public void setPid(int pid)
+	{
+		this.pid = pid;
 	}
 
 	public String getPath()
