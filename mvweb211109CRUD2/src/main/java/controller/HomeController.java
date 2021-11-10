@@ -13,6 +13,7 @@ public class HomeController
 	public String home(ModelMap model)
 	{
 		// model.addAttribute("message", "Hello Spring MVC Framework!");
-		return "default";
+		return "default_T";
+//		return "default";
 	}
 }

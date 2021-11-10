@@ -6,18 +6,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "hbstudent")
-public class hbstudent implements java.io.Serializable
+public class Student implements java.io.Serializable
 {
 	@Id
 	private String studentId;
 	private String name;
 	private String address;
 
-	public hbstudent()
+	public Student()
 	{
 	}
 
-	public hbstudent(String studentId, String name, String address)
+	public Student(String studentId, String name, String address)
 	{
 		this.studentId = studentId;
 		this.name = name;

@@ -14,7 +14,7 @@
 	<button onclick="studentupdate()">修改</button>
 	<button onclick="studentdelete()">刪除</button>
 	<p/>
-	學號:<input type="text" id="studentId" value="S005"/><p/>
+	學號:<input type="text" id="studentId" value="S001"/><p/>
 	姓名:<input type="text" id="name" value="Scarlet"/><p/>
 	住址:<input type="text" id="address" value="Kung Yuan"/><p/>
 	<div id="div1">Show Message</div>
@@ -40,11 +40,12 @@
 				{
 					"studentId":$("#studentId").val(),
 					"name":$("#name").val(),
-					"address":$("#address").val()},
-					function(data)
-					{
-						$("#div1").html(data);
-					});
+					"address":$("#address").val()
+				},
+				function(data)
+				{
+					$("#div1").html(data);
+				});
 		}
 
 		function studentquery()
@@ -67,11 +68,12 @@
 				{
 					"studentId":$("#studentId").val(),
 					"name":$("#name").val(),
-					"address":$("#address").val()},
-					function(data)
-					{
-						$("#div1").html(data);
-					});
+					"address":$("#address").val()
+				},
+				function(data)
+				{
+					$("#div1").html(data);
+				});
 		}
 
 		function studentdelete()
@@ -84,11 +86,13 @@
 				"student/deleteStudent",
 				{
 					"studentId":$("#studentId").val(),
-					"name":"","address":""},
-					function(data)
-					{
-						$("#div1").html(data);
-					});
+					"name":"",
+					"address":""
+				},
+				function(data)
+				{
+					$("#div1").html(data);
+				});
 		}
 
 	</script>
