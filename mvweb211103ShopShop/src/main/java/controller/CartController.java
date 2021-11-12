@@ -12,27 +12,35 @@ import model.*;
 
 @Controller
 @RequestMapping(value = "cart")
-public class CartController {
+public class CartController
+{
 
 	@RequestMapping(value = "index", method = RequestMethod.GET)
-	public String index() {
+	public String index()
+	{
 		return "cart/cartindex";
 	}
 
 	@RequestMapping(value = "buy/{id}", method = RequestMethod.GET)
-	public String buy(@PathVariable("id") String id, HttpSession session) {
+	public String buy(@PathVariable("id") String id, HttpSession session)
+	{
 		ProductModel productModel = new ProductModel();
-		if (session.getAttribute("cart") == null) {
+		if (session.getAttribute("cart") == null)
+		{
 			List<Item> cart = new ArrayList<Item>();
 			cart.add(new Item(productModel.find(id), 1));
 			session.setAttribute("cart", cart);
-		} else {
+		} else
+		{
 			List<Item> cart = (List<Item>) session.getAttribute("cart");
 			int index = this.exists(id, cart);
-			if (index == -1) {
+			if (index == -1)
+			{
 				cart.add(new Item(productModel.find(id), 1));
-			} else {
-				int quantity = cart.get(index).getQuantity() + 1;
+			} else
+			{
+				int quantity = cart.get(index).getQuantity();
+				quantity++;
 				cart.get(index).setQuantity(quantity);
 			}
 			session.setAttribute("cart", cart);
@@ -41,7 +49,8 @@ public class CartController {
 	}
 
 	@RequestMapping(value = "remove/{id}", method = RequestMethod.GET)
-	public String remove(@PathVariable("id") String id, HttpSession session) {
+	public String remove(@PathVariable("id") String id, HttpSession session)
+	{
 		ProductModel productModel = new ProductModel();
 		List<Item> cart = (List<Item>) session.getAttribute("cart");
 		int index = this.exists(id, cart);
@@ -50,11 +59,12 @@ public class CartController {
 		return "redirect:/cart/index";
 	}
 
-	private int exists(String id, List<Item> cart) {
-		for (int i = 0; i < cart.size(); i++) {
-			if (
-					((Integer)cart.get(i).getImage().getPid())
-					.equalsIgnoreCase(Integer.parseInt(id))) {
+	private int exists(String id, List<Item> cart)
+	{
+		for (int i = 0; i < cart.size(); i++)
+		{
+			if (cart.get(i).getProduct().getId().equalsIgnoreCase(id))
+			{
 				return i;
 			}
 		}

@@ -5,28 +5,32 @@ import java.util.List;
 
 public class ProductModel
 {
-	private List<Image> products;
+
+	private List<Product> products;
 
 	public ProductModel()
 	{
-		this.products = new ArrayList<Image>();
-		this.products.add(new Image(1, "images/p1.jpg", "1", "1111"));
-		this.products.add(new Image(1, "images/p2.jpg", "1", "1111"));
-		this.products.add(new Image(1, "images/p3.jpg", "1", "1111"));
+		this.products = new ArrayList<Product>();
+		this.products.add(new Product("p01", "JBud Elite", "images/p1.jpg", 20));
+		this.products.add(new Product("p02", "EdiMax Wifi", "images/p2.jpg", 21));
+		this.products.add(new Product("p03", "Asus Laptop", "images/p3.jpg", 22));
 	}
 
-	public List<Image> findAll()
+	public List<Product> findAll()
 	{
-		return products;
+		return this.products;
 	}
 
-	public Image find(String id)
+	public Product find(String id)
 	{
-		for (Image image : products)
+		for (Product product : this.products)
 		{
-			if (id.equalsIgnoreCase(image.getPid() + ""))
-				return image;
+			if (product.getId().equalsIgnoreCase(id))
+			{
+				return product;
+			}
 		}
 		return null;
 	}
+
 }
