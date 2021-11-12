@@ -20,7 +20,8 @@ import model.Account;
 @Controller
 public class AccountController
 {
-	@RequestMapping("/acc")
+//	@RequestMapping("/acc")
+	@RequestMapping(value = "/acc", produces = "application/text;charset=utf8")
 	@ResponseBody
 	public List<Account> generateAccount(Model m)
 	{

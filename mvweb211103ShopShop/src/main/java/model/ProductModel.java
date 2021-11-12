@@ -14,6 +14,12 @@ public class ProductModel
 		this.products.add(new Product("p01", "JBud Elite", "images/p1.jpg", 20));
 		this.products.add(new Product("p02", "EdiMax Wifi", "images/p2.jpg", 21));
 		this.products.add(new Product("p03", "Asus Laptop", "images/p3.jpg", 22));
+
+	}
+
+	void from_mvDB()
+	{
+
 	}
 
 	public List<Product> findAll()
