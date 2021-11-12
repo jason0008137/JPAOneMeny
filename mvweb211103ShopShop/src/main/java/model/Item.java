@@ -1,30 +1,41 @@
 package model;
-public class Item {
 
-	private Product product;
+public class Item
+{
+
+	private Image image;
 	private int quantity;
 
-	public Product getProduct() {
-		return product;
+	public Item()
+	{
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
+	public Item(Image image, int quantity)
+	{
+		super();
+		this.image = image;
 		this.quantity = quantity;
 	}
 
-	public Item() {
+	public Image getImage()
+	{
+		return image;
 	}
 
-	public Item(Product product, int quantity) {
-		this.product = product;
+	public void setImage(Image image)
+	{
+		this.image = image;
+	}
+
+	public int getQuantity()
+	{
+		return quantity;
+	}
+
+	public void setQuantity(int quantity)
+	{
 		this.quantity = quantity;
 	}
 

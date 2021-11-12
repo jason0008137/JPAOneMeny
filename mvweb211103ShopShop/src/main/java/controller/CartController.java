@@ -63,7 +63,7 @@ public class CartController
 	{
 		for (int i = 0; i < cart.size(); i++)
 		{
-			if (cart.get(i).getProduct().getId().equalsIgnoreCase(id))
+			if (cart.get(i).getImage().getPid() == Integer.parseInt(id))
 			{
 				return i;
 			}

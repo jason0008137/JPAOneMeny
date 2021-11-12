@@ -3,37 +3,73 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.Service;
+import org.hibernate.service.ServiceRegistry;
+
 public class ProductModel
 {
 
-	private List<Product> products;
+	private List<Image> images;
 
 	public ProductModel()
 	{
-		this.products = new ArrayList<Product>();
-		this.products.add(new Product("p01", "JBud Elite", "images/p1.jpg", 20));
-		this.products.add(new Product("p02", "EdiMax Wifi", "images/p2.jpg", 21));
-		this.products.add(new Product("p03", "Asus Laptop", "images/p3.jpg", 22));
+		this.images = new ArrayList<Image>();
 
-	}
+		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder()
+				.configure("hibernate.cfg.xml")
+				.build();
 
-	void from_mvDB()
-	{
+		Metadata meta = new MetadataSources(ssr)
+				.getMetadataBuilder()
+				.build();
 
-	}
+		SessionFactory factory = meta.getSessionFactoryBuilder().build();
+		Session sessionObj = null;
+		Session session = null;
+		session = factory.openSession();
+		Transaction tx = null;
 
-	public List<Product> findAll()
-	{
-		return this.products;
-	}
-
-	public Product find(String id)
-	{
-		for (Product product : this.products)
+		try
 		{
-			if (product.getId().equalsIgnoreCase(id))
+			tx = session.beginTransaction();
+			images = session.createQuery("from productimages").list();
+
+			// check----------
+			System.out.println("product list: " + images);
+			// ---------------
+
+			tx.commit();
+		} catch (Exception e)
+		{
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally
+		{
+			session.close();
+			factory.close();
+		}
+	}
+
+	public List<Image> findAll()
+	{
+		return this.images;
+	}
+
+	public Image find(String id)
+	{
+		for (Image image : this.images)
+		{
+			if (image.getPid() == Integer.parseInt(id))
 			{
-				return product;
+				return image;
 			}
 		}
 		return null;
