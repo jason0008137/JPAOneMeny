@@ -18,12 +18,12 @@
 		</tr>
 		<c:forEach var="product" items="${products }">
 			<tr>
-				<td>${product.id }</td>
+				<td>${product.pid }</td>
 				<td>${product.name }</td>
-				<td><img src="${pageContext.request.contextPath }/${product.photo }" width="150"></td>
-				<td>${product.price }</td>
+				<td><img src="${pageContext.request.contextPath }/${product.path }" width="150"></td>
+				<td>${product.des }</td>
 				<td align="center">
-					<a href="${pageContext.request.contextPath }/cart/buy/${product.id}">Buy Now</a>
+					<a href="${pageContext.request.contextPath }/cart/buy/${product.pid}">Buy Now</a>
 				</td>
 			</tr>
 		</c:forEach>
