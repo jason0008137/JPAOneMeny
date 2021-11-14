@@ -39,7 +39,7 @@ public class ProductModel
 		try
 		{
 			tx = session.beginTransaction();
-			images = session.createQuery("from productimages").list();
+			images = session.createQuery("from Image").list();
 
 			// check----------
 			System.out.println("product list: " + images);
