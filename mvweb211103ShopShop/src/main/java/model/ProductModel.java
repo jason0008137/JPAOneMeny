@@ -19,7 +19,8 @@ public class ProductModel
 	public ProductModel()
 	{
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder()
-				.configure("hibernate.cfg.xml")
+//				.configure("hibernate.cfg.xml")
+				.configure()
 				.build();
 
 		Metadata meta = new MetadataSources(ssr)

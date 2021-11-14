@@ -10,5 +10,6 @@
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
   <mapping class="model.Image"/>
   <mapping class="model.Account"/>
+  <mapping class="model.Product"/>
  </session-factory>
 </hibernate-configuration>
