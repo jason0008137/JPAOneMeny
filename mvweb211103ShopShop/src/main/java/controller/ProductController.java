@@ -11,6 +11,6 @@ public class ProductController
 	public String produce(ModelMap model)
 	{
 		System.out.println("pro OK");
-		return "productEP";
+		return "product";
 	}
 }

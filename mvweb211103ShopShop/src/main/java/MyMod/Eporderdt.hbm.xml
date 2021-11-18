@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="classicmodels" dynamic-insert="false" dynamic-update="false" mutable="true" name="MyMod.Eporderdt" optimistic-lock="none" polymorphism="implicit" select-before-update="false" table="eporderdt">
+        <composite-id class="MyMod.EporderdtId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="oid" type="int">
+                <column name="oid"/>
+            </key-property>
+            <key-property name="pid" type="int">
+                <column name="pid"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="MyMod.Eporder" embed-xml="true" fetch="select" insert="false" name="eporder" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="oid" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="MyMod.Epproduct" embed-xml="true" fetch="select" insert="false" name="epproduct" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="pid" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="amount" optimistic-lock="true" type="int" unique="false">
+            <column name="amount" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

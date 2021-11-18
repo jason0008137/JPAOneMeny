@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory name="">
+ <session-factory>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
   <property name="hibernate.connection.password">jason4680</property>
   <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/classicmodels?useUnicode=true&amp;characterEncoding=utf8</property>
@@ -13,6 +13,10 @@
   <mapping class="model.Product"/>
   <mapping class="modelOneToMany.Coffees"/>
   <mapping class="modelOneToMany.Suppliers"/>
+  <mapping resource="MyMod/Epacount.hbm.xml"/>
+  <mapping resource="MyMod/Eporder.hbm.xml"/>
+  <mapping resource="MyMod/Eporderdt.hbm.xml"/>
+  <mapping resource="MyMod/Epproduct.hbm.xml"/>
   <!--   <mapping resource="modelOneToMany/Coffees.hbm.xml"/> 
    <mapping resource="modelOneToMany/Suppliers.hbm.xml"/> -->
  </session-factory>
