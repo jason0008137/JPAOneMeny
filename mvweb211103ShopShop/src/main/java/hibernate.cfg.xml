@@ -11,7 +11,9 @@
   <mapping class="model.Image"/>
   <mapping class="model.Account"/>
   <mapping class="model.Product"/>
-  <mapping resource="modelOneToMany/Coffees.hbm.xml"/>
-  <mapping resource="modelOneToMany/Suppliers.hbm.xml"/>
+  <mapping class="modelOneToMany.Coffees"/>
+  <mapping class="modelOneToMany.Suppliers"/>
+  <!--   <mapping resource="modelOneToMany/Coffees.hbm.xml"/> 
+   <mapping resource="modelOneToMany/Suppliers.hbm.xml"/> -->
  </session-factory>
 </hibernate-configuration>

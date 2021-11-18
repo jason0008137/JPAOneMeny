@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 import java.util.*;
 
@@ -22,62 +21,64 @@ import model.*;
 import modelOneToMany.Coffees;
 import modelOneToMany.Suppliers;
 
-/**
- * Servlet implementation class SupplierCoffeeServlet
- */
 @WebServlet("/SupplierCoffeeServlet")
-public class SupplierCoffeeServlet extends HttpServlet {
+public class SupplierCoffeeServlet extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SupplierCoffeeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-    private static SessionFactory sessionFactory;
-	private  SessionFactory  buildSessionFactory() {
-		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-		Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
-		SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
-		return sessionFactory;
-	}
-	public SessionFactory getSessionFactory() {
-		if (sessionFactory == null)
-			sessionFactory = buildSessionFactory();
-		return sessionFactory;
+	public SupplierCoffeeServlet()
+	{
+		super();
 	}
 
+	private static SessionFactory sessionFactory;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		sessionFactory = getSessionFactory();
 		Session session = sessionFactory.openSession();
-		System.out.println("Session created");	 		    
+		
+		System.out.println("Session created");
+		
 		Transaction tx = session.beginTransaction();
-		TypedQuery<Suppliers> query= session.createQuery("from Suppliers a where a.supId= :sup_id", Suppliers.class);
-		 query.setParameter("sup_id", 49);
-		List<Suppliers> sups=query.getResultList();
-		Set<Coffees> cofs=sups.get(0).getCoffeeses();
-		List<Coffees> cofss=new ArrayList<>(cofs);
+		TypedQuery<Suppliers> query = session.createQuery("from Suppliers a where a.supId= :sup_id", Suppliers.class);
+		query.setParameter("sup_id", 49);
+		List<Suppliers> sups = query.getResultList();
+		Set<Coffees> cofs = sups.get(0).getCoffeeses();
+		List<Coffees> cofss = new ArrayList<>(cofs);
 		request.setAttribute("sups", sups);
 		request.setAttribute("coffees", cofs);
-		request.getRequestDispatcher("viewTables.jsp").forward(request, response);		
+		request.getRequestDispatcher("viewTables.jsp").forward(request, response);
 		tx.commit();
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
 		doGet(request, response);
 	}
 
+	private SessionFactory buildSessionFactory()
+	{
+		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+				.configure("hibernate.cfg.xml")
+				.build();
+
+		Metadata metadata = new MetadataSources(serviceRegistry)
+				.getMetadataBuilder()
+				.build();
+
+		SessionFactory sessionFactory = metadata
+				.getSessionFactoryBuilder()
+				.build();
+
+		return sessionFactory;
+	}
+
+	public SessionFactory getSessionFactory()
+	{
+		if (sessionFactory == null)
+			sessionFactory = buildSessionFactory();
+		return sessionFactory;
+	}
 }
